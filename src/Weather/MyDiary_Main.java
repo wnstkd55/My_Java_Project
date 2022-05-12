@@ -29,15 +29,19 @@ public class MyDiary_Main {
 				System.out.println("어떤 정보를 원하십니까?");
 				System.out.println("기능을 선택해주세요!");
 				System.out.println("-------------------------------------------");
-				System.out.println("1. 오늘의 날씨 | 2. 미세먼지 | 3. 종료하기");
+				System.out.println("1. 오전의 날씨 | 2. 오후의 날씨 | 3. 미세먼지 | 4. 종료하기");
 				System.out.println("-------------------------------------------");
 				int submenu_num = sc.nextInt();
 				
 				if(submenu_num == 1) {
-					ApiExplorer2.ApiExplorer2();
+					ApiExplorer2_mo.ApiExplorer_mo();
+					
 				}
-				else if(submenu_num == 3) {
-					break;
+				else if(submenu_num == 2) {
+					ApiExplorer2_af.ApiExplorer_af();
+					
+				}else if(submenu_num == 4) {
+					
 				}
 				break;
 			case 3:

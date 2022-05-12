@@ -11,17 +11,17 @@ import org.json.JSONObject;
 
 
 
-public class ApiExplorer2 {
+public class ApiExplorer2_mo {
 	private static final String SERVICE_KEY = "ABwQU4BdhwGQdV3Yxho3jb0qPCed0bVrxoScthUlcsmf7WjZ6FQWn4MjP3MCduihJO4Bc0BpsBNY62ROfyJb%2Bg%3D%3D";
 	private static final String pageNO = "1";
 	private static final String numOfRows = "60";		//기준시간으로부터 최대 데이터수
 	private static final String TODAY = new SimpleDateFormat("yyyyMMdd").format(new Date());
 	private static final String TODAY_HOUR = Integer.toString((Integer.parseInt(new SimpleDateFormat("HH00").format(new Date()))));
-	private static final String TIME_MO = "0500";
+	private static final String TIME_MO = "0700";
 	private static final String coordy_X = "59";		
 	private static final String coordy_Y = "124";	//서울 독산4동 
 	
-    public static void ApiExplorer2(){
+    public static void ApiExplorer_mo(){
     	String result = "";
     	try {
     		 URL url = new URL("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"+
