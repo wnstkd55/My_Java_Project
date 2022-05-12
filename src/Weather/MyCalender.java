@@ -1,4 +1,4 @@
-package Test1;
+package Weather;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ public class MyCalender {
 
     public void starter(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("í˜„ì¬ ë‹¬ë ¥ ì¶œë ¥ : 1 , ê³¼ê±° ë‹¬ë ¥ ì¶œë ¥ : 2");
+        System.out.println("ÇöÀç ´Ş·Â Ãâ·Â : 1 , °ú°Å ´Ş·Â Ãâ·Â : 2");
         String input = scanner.next();
         switch (input) {
             case "1" :
@@ -23,7 +23,7 @@ public class MyCalender {
                 buildPastCalendar(year, month);
                 break;
             default:
-                System.out.println("ì˜ëª»ëœ ëª…ë ¹ì–´ì…ë‹ˆë‹¤. ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”");
+                System.out.println("Àß¸øµÈ ¸í·É¾îÀÔ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä");
                 starter();
                 break;
         }
@@ -31,10 +31,10 @@ public class MyCalender {
 
     public int getYear() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n ì¶œë ¥ì„ ì›í•˜ëŠ” ì—°ë„ë¥¼ ìˆ«ìë¡œ ì…ë ¥í•˜ì„¸ìš”.");
+        System.out.println("\n Ãâ·ÂÀ» ¿øÇÏ´Â ¿¬µµ¸¦ ¼ıÀÚ·Î ÀÔ·ÂÇÏ¼¼¿ä.");
         int yearInput = scanner.nextInt();
         if (yearInput <= 0) {
-            System.out.println("! ì—°ë„ëŠ” ì–‘ìˆ˜ë¡œ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
+            System.out.println("! ¿¬µµ´Â ¾ç¼ö·Î ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
             yearInput = scanner.nextInt();
         }
         return yearInput;
@@ -42,10 +42,10 @@ public class MyCalender {
 
     public int getMonth() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n ì¶œë ¥ì„ ì›í•˜ëŠ” ì›”ì„ ìˆ«ìë¡œ ì…ë ¥í•˜ì„¸ìš”.");
+        System.out.println("\n Ãâ·ÂÀ» ¿øÇÏ´Â ¿ùÀ» ¼ıÀÚ·Î ÀÔ·ÂÇÏ¼¼¿ä.");
         int monthInput = scanner.nextInt();
         if (monthInput <= 0 || monthInput > 12) {
-            System.out.println("ì›”ì€ 1ì´ìƒ 12ì´í•˜ì˜ ì–‘ìˆ˜ë¡œ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
+            System.out.println("¿ùÀº 1ÀÌ»ó 12ÀÌÇÏÀÇ ¾ç¼ö·Î ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
             monthInput = scanner.nextInt();
         }
         return monthInput;
@@ -72,82 +72,82 @@ public class MyCalender {
         String YMD = year + "-" + month + "-01";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String today = formatter.format(currentTime);
-        System.out.println("<ì˜¤ëŠ˜ ë‚ ì§œëŠ” " + today + "ì…ë‹ˆë‹¤>");
+        System.out.println("<¿À´Ã ³¯Â¥´Â " + today + "ÀÔ´Ï´Ù>");
         try {
             calendar.setTime(formatter.parse(YMD));
         } catch (ParseException e) {
             e.printStackTrace();
         }
         int dayNum = calendar.get(Calendar.DAY_OF_WEEK);
-        // 1(ì¼) 2(ì›”) 3(í™”) 4(ìˆ˜) 5(ëª©) 6(ê¸ˆ) 7(í† )
+        // 1(ÀÏ) 2(¿ù) 3(È­) 4(¼ö) 5(¸ñ) 6(±İ) 7(Åä)
         return dayNum;
     }
 
     public void buildCurrentCalendar() {
-        //(ê¸°ë³¸ê°’ìœ¼ë¡œëŠ” í˜„ì¬ë‚ ì§œì˜ ë‹¬ë ¥ì„ ì¶œë ¥)
-        // 1. ì—°, ì›” ê²°ì •
+        //(±âº»°ªÀ¸·Î´Â ÇöÀç³¯Â¥ÀÇ ´Ş·ÂÀ» Ãâ·Â)
+        // 1. ¿¬, ¿ù °áÁ¤
         int year = myCalender.getCurrent()[0];
         int month = myCalender.getCurrent()[1];
-        // 2. ì›” ê°€ì§€ê³  ìµœëŒ€ì¼ ê²°ì • (2ì›”ì´ë©´ ìœ¤ë…„ test, ìœ¤ë…„ì´ë©´ ìµœëŒ€ì¼ë°°ì—´=dayDataLeapYear)
+        // 2. ¿ù °¡Áö°í ÃÖ´ëÀÏ °áÁ¤ (2¿ùÀÌ¸é À±³â test, À±³âÀÌ¸é ÃÖ´ëÀÏ¹è¿­=dayDataLeapYear)
         int dayMax = 0;
         int[] dayData = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int[] dayDataLeapYear = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         boolean leapTest = isLeapYear(year);
-        if (month == 2 && leapTest == true) { //2ì›”ì´ê³  ìœ¤ë…„
+        if (month == 2 && leapTest == true) { //2¿ùÀÌ°í À±³â
             dayMax = dayDataLeapYear[month - 1];
         }
-        if (month == 2 && leapTest == false) { //2ì›”ì´ì§€ë§Œ ìœ¤ë…„X
+        if (month == 2 && leapTest == false) { //2¿ùÀÌÁö¸¸ À±³âX
             dayMax = dayData[month - 1];
         }
-        if (month != 2) { // 2ì›” ì•„ë‹˜
+        if (month != 2) { // 2¿ù ¾Æ´Ô
             dayMax = dayData[month - 1];
         }
-        // 3. ì›”ì˜ 1ì¼ì˜ ìš”ì¼ ê³„ì‚°
-        int dayWeek1 = calMonth1stDayWeek(year, month); // í˜„ì¬ ì›”ì˜ 1ì¼ì˜ ìš”ì¼
-        // 4. ë‹¬ë ¥ í˜•íƒœë¡œ ì¶œë ¥ - printCalendar
+        // 3. ¿ùÀÇ 1ÀÏÀÇ ¿äÀÏ °è»ê
+        int dayWeek1 = calMonth1stDayWeek(year, month); // ÇöÀç ¿ùÀÇ 1ÀÏÀÇ ¿äÀÏ
+        // 4. ´Ş·Â ÇüÅÂ·Î Ãâ·Â - printCalendar
         printCalendar(year, month, dayMax, dayWeek1);
     }
 
     public void buildPastCalendar(int year, int month){
-        // (ì—°, ì›”ì„ ì…ë ¥ë°›ìœ¼ë©´ ê·¸ ì—°, ì›”ì˜ ë‹¬ë ¥ì„ ì¶œë ¥.)
-        // 1. ì—°, ì›” ê²°ì • = íŒŒë¼ë¯¸í„°ë¡œ ë°›ì•„ì˜´
-        // 2. ì›” ê°€ì§€ê³  ìµœëŒ€ì¼ ê²°ì • (2ì›”ì´ë©´ ìœ¤ë…„ test, ìœ¤ë…„ì´ë©´ ìµœëŒ€ì¼ë°°ì—´=dayDataLeapYear)
+        // (¿¬, ¿ùÀ» ÀÔ·Â¹ŞÀ¸¸é ±× ¿¬, ¿ùÀÇ ´Ş·ÂÀ» Ãâ·Â.)
+        // 1. ¿¬, ¿ù °áÁ¤ = ÆÄ¶ó¹ÌÅÍ·Î ¹Ş¾Æ¿È
+        // 2. ¿ù °¡Áö°í ÃÖ´ëÀÏ °áÁ¤ (2¿ùÀÌ¸é À±³â test, À±³âÀÌ¸é ÃÖ´ëÀÏ¹è¿­=dayDataLeapYear)
         int dayMax = 0;
         int[] dayData = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int[] dayDataLeapYear = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         boolean leapTest = isLeapYear(year);
-        if (month == 2 && leapTest == true) { //2ì›”ì´ê³  ìœ¤ë…„
+        if (month == 2 && leapTest == true) { //2¿ùÀÌ°í À±³â
             dayMax = dayDataLeapYear[month - 1];
         }
-        if (month == 2 && leapTest == false) { //2ì›”ì´ì§€ë§Œ ìœ¤ë…„X
+        if (month == 2 && leapTest == false) { //2¿ùÀÌÁö¸¸ À±³âX
             dayMax = dayData[month - 1];
         }
-        if (month != 2) { // 2ì›” ì•„ë‹˜
+        if (month != 2) { // 2¿ù ¾Æ´Ô
             dayMax = dayData[month - 1];
         }
-        // 3. ì›”ì˜ 1ì¼ì˜ ìš”ì¼ ê³„ì‚°
-        int dayWeek1 = calMonth1stDayWeek(year, month); // ê¸°ì¤€ ì›”ì˜ 1ì¼ì˜ ìš”ì¼
-        // 4. ë‹¬ë ¥ í˜•íƒœë¡œ ì¶œë ¥ - printCalendar
+        // 3. ¿ùÀÇ 1ÀÏÀÇ ¿äÀÏ °è»ê
+        int dayWeek1 = calMonth1stDayWeek(year, month); // ±âÁØ ¿ùÀÇ 1ÀÏÀÇ ¿äÀÏ
+        // 4. ´Ş·Â ÇüÅÂ·Î Ãâ·Â - printCalendar
         printCalendar(year, month, dayMax, dayWeek1);
     }
 
     public void printCalendar(int year, int month, int dayMax, int dayWeek1) {
-        // ì›”ì˜ 1ì¼ì˜ ìš”ì¼ë¶€í„°(dayWeek1) 1~ìµœëŒ€ì¼ ì¶œë ¥.
-        System.out.println("========== " + year + "ë…„ " + month + "ì›” ==========");
-        System.out.println("  ì¼  ì›”  í™”  ìˆ˜  ëª©  ê¸ˆ  í†   ");
+        // ¿ùÀÇ 1ÀÏÀÇ ¿äÀÏºÎÅÍ(dayWeek1) 1~ÃÖ´ëÀÏ Ãâ·Â.
+        System.out.println("========== " + year + "³â " + month + "¿ù ==========");
+        System.out.println("  ÀÏ  ¿ù  È­  ¼ö  ¸ñ  ±İ  Åä  ");
         for (int j = 1; j < dayWeek1; j++) {
         	System.out.print("    "); //
         }
         for (int i = 1; i <= dayMax; i++) {
-            if (i < 10) {// í•œ ìë¦¬ ìˆ˜ì´ë©´ ì•ì— ê³µë°± í•œ ë²ˆ ë” ì¶”ê°€
+            if (i < 10) {// ÇÑ ÀÚ¸® ¼öÀÌ¸é ¾Õ¿¡ °ø¹é ÇÑ ¹ø ´õ Ãß°¡
                 System.out.print("  " + i + " ");
             }
             if (i >= 10) {
                 System.out.print(" " + i + " ");
             }
-            // ì¤„ë°”ê¿ˆ
-            if ((dayWeek1 - 1 + i ) % 7 == 0) { // ê³µë°± = (dayWeek1 - 1) + i ê°€ ì¼ì£¼ì¼ í•œ ì¤„.
-                System.out.println();//ì¤„ë°”ê¿ˆ
+            // ÁÙ¹Ù²Ş
+            if ((dayWeek1 - 1 + i ) % 7 == 0) { // °ø¹é = (dayWeek1 - 1) + i °¡ ÀÏÁÖÀÏ ÇÑ ÁÙ.
+                System.out.println();//ÁÙ¹Ù²Ş
             }
         }
     }

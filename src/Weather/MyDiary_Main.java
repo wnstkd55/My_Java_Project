@@ -1,22 +1,20 @@
-package Test1;
+package Weather;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import org.json.simple.parser.ParseException;
-
 public class MyDiary_Main {
 
-	  public static void main(String[] args) throws IOException, ParseException {
+	  public static void main(String[] args) throws IOException{
 		  boolean run = true;
 		  Scanner sc = new Scanner(System.in);
-		  System.out.println("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”: ");
+		  System.out.println("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä: ");
 		  String name = sc.next();
-		  System.out.println(name+"ë‹˜ì˜ ë‹¤ì´ì–´ë¦¬ê°€ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤!");
+		  System.out.println(name+"´ÔÀÇ ³¯¾¾java°¡ ÄÑÁ³½À´Ï´Ù!");
 		  while(run) {
-			System.out.println("ê¸°ëŠ¥ì„ ì„ íƒí•´ì£¼ì„¸ìš”!");
+			System.out.println("±â´ÉÀ» ¼±ÅÃÇØÁÖ¼¼¿ä!");
 			System.out.println("-------------------------------------------");
-			System.out.println("1. ë‹¬ë ¥ë³´ê¸° | 2. ë‚ ì”¨ë³´ê¸° | 3. ì¢…ë£Œí•˜ê¸°");
+			System.out.println("1. ´Ş·Âº¸±â | 2. ³¯¾¾º¸±â | 3. Á¾·áÇÏ±â");
 			System.out.println("-------------------------------------------");
 			int menu_num = sc.nextInt();
 			
@@ -27,13 +25,26 @@ public class MyDiary_Main {
 				System.out.println();
 				break;
 			case 2:
+				System.out.println("³¯¾¾Á¤º¸¸¦ º¸¿©µå¸®°Ú½À´Ï´Ù.");
+				System.out.println("¾î¶² Á¤º¸¸¦ ¿øÇÏ½Ê´Ï±î?");
+				System.out.println("±â´ÉÀ» ¼±ÅÃÇØÁÖ¼¼¿ä!");
+				System.out.println("-------------------------------------------");
+				System.out.println("1. ¿À´ÃÀÇ ³¯¾¾ | 2. ¹Ì¼¼¸ÕÁö | 3. Á¾·áÇÏ±â");
+				System.out.println("-------------------------------------------");
+				int submenu_num = sc.nextInt();
 				
+				if(submenu_num == 1) {
+					ApiExplorer2.ApiExplorer2();
+				}
+				else if(submenu_num == 3) {
+					break;
+				}
 				break;
 			case 3:
-				System.out.println("ë‹¤ì´ì–´ë¦¬ë¥¼ ì¢…ë£Œí•˜ê² ìŠµë‹ˆë‹¤.");
+				System.out.println("¾îÇÃÀ» Á¾·áÇÏ°Ú½À´Ï´Ù.");
 				return;
 			default:
-                System.out.println("ë©”ë‰´ì¤‘ì— ê³¨ë¼ì„œ ë‹¤ì‹œ ì…ë ¥í•´ì£¼ì„¸ìš”");
+                System.out.println("¸Ş´ºÁß¿¡ °ñ¶ó¼­ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
                 break;
 			}
 		  }
